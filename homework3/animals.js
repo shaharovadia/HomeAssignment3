@@ -450,3 +450,21 @@ const animals = [
     image: "https://placeholder.com/images/dolphin_50.jpg",
   },
 ];
+const animalCardsDiv = document.querySelector(".animal-cards");
+animals.forEach((animal) => {
+  const cardDiv = document.createElement("div");
+  cardDiv.classList.add("card");
+  cardDiv.innerHTML = `
+  <div class="header">${animal.name}</div>
+  <div class="info">
+    <img src="${animal.image}" alt="${animal.name}" />
+    <p>Type: ${animal.type}</p>
+    <p>Color: ${animal.color}</p>
+    <p>Size: ${animal.size.width} x ${animal.size.height}</p>
+    <p>Weight: ${animal.size.weight}</p>
+    <p>Food: ${animal.food}</p>
+    <p>Is Predator: ${animal.isPredator}</p>
+  </div>
+`;
+  animalCardsDiv.appendChild(cardDiv);
+});
