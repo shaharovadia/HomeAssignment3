@@ -1,4 +1,3 @@
-
 const form = document.getElementById("create-visitor-form");
 const firstNameInput = document.getElementById("fname");
 const lastNameInput = document.getElementById("lname");
@@ -21,9 +20,21 @@ function createNewVisitor(fullName) {
   else{
   let visitor = {name: fullName , coins: 50}
   visitors.push(visitor);
+  const visitorsJson = JSON.stringify(visitors);
+
+  // Save the JSON string in local storage using the key "visitors"
+  localStorage.setItem("visitors", visitorsJson);
+
+  // Display success message or perform other actions (optional)
   alert("Visitor added successfully!");
-  window.location.href="./login.html";
+  form.reset(); // Reset the form after successful submission
+  
   }
+  document.getElementById("login").addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href="./login.html";
+  });
+
   
 }
   const validateFormInputs = () => {
