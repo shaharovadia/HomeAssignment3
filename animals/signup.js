@@ -28,6 +28,7 @@ function createNewVisitor(fullName) {
   // Display success message or perform other actions (optional)
   alert("Visitor added successfully!");
   form.reset(); // Reset the form after successful submission
+  window.location.href="./login.html";
   
   }
   document.getElementById("login").addEventListener("click", (event) => {
