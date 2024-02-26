@@ -1,18 +1,17 @@
 function loginAsVisitor(visitorName) {
   // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
   // שמרו את האורח שבחרתם, בלוקל סטורג' כך שבכל העמודים נדע מי האורח הנוכחי
-    const selectedVisitor = visitors.find(v => v.name === visitorName);
-  
-    if (selectedVisitor) {
-      
-      localStorage.setItem("currentVisitor", JSON.stringify(selectedVisitor));
-  alert("Welcome to the zoo!")
-      
-      window.location.href = "zoo.html";
-    }
+  const selectedVisitor = visitors.find((v) => v.name === visitorName);
+
+  if (selectedVisitor) {
+    localStorage.setItem("currentVisitor", JSON.stringify(selectedVisitor));
+    alert("Welcome to the zoo!");
+
+    window.location.href = "zoo.html";
+  }
 }
 
-let visitorsForView=[...visitors]
+let visitorsForView = [...visitors];
 const dialog = document.querySelector("#visitor-dialog");
 
 const getVisitorHTMLCard = (visitor) => {
@@ -25,14 +24,11 @@ const getVisitorHTMLCard = (visitor) => {
         </div>
       </div>`;
 
-      const selectVisitorButton = document.createElement("button");
-      selectVisitorButton.innerText = "Select";
-      selectVisitorButton.addEventListener("click", () => {
-        
-        loginAsVisitor(visitor.name); // Call loginAsVisitor when button is clicked
-      });
-
-     
+  const selectVisitorButton = document.createElement("button");
+  selectVisitorButton.innerText = "Select";
+  selectVisitorButton.addEventListener("click", () => {
+    loginAsVisitor(visitor.name); // Call loginAsVisitor when button is clicked
+  });
 
   const wrapper = document.createElement("div");
   wrapper.className = "visitor-card";
@@ -53,7 +49,7 @@ const getSearchBox = () => {
   queryInput.placeholder = "Search visitor";
   queryInput.className = "form-control my-4";
   queryInput.oninput = (e) => {
-    visitorsForView =visitors.filter((visitor) =>
+    visitorsForView = visitors.filter((visitor) =>
       visitor.name.includes(e.target.value)
     );
     renderVisitors();
