@@ -20,4 +20,53 @@ function setFilter(filterKey, filterValue) {
    */
   // ודאו כי אתם שומרים את הפילטרים שהיוזר בחר בלוקל סטורג׳ וטוענים אותם בהתאם
   // רנדרו רק את החיות שעומדות בתנאים של הפילטרים
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const animalCardsContainer = document.querySelector(".animal-cards");
+    const searchNameInput = document.getElementById("searchName");
+    const searchWeightInput = document.getElementById("searchWeight");
+    const searchHeightInput = document.getElementById("searchHeight");
+    const searchColorInput = document.getElementById("searchColor");
+    const searchHabitatInput = document.getElementById("searchHabitat");
+
+    function filterAnimals() {
+      const filteredAnimals = animals.filter((animal) => {
+        return (
+          (searchNameInput.value === "" ||
+            animal.name
+              .toLowerCase()
+              .includes(searchNameInput.value.toLowerCase())) &&
+          (searchWeightInput.value === "" ||
+            animal.weight.toString().includes(searchWeightInput.value)) &&
+          (searchHeightInput.value === "" ||
+            animal.height.toString().includes(searchHeightInput.value)) &&
+          (searchColorInput.value === "" ||
+            animal.color
+              .toLowerCase()
+              .includes(searchColorInput.value.toLowerCase())) &&
+          (searchHabitatInput.value === "" ||
+            animal.habitat
+              .toLowerCase()
+              .includes(searchHabitatInput.value.toLowerCase()))
+        );
+      });
+
+      animalCardsContainer.innerHTML = "";
+      filteredAnimals.forEach((animal) => {
+        const animalCardHTML = generateAnimalCard(animal);
+        animalCardsContainer.insertAdjacentHTML("beforeend", animalCardHTML);
+      });
+    }
+
+    searchNameInput.addEventListener("input", filterAnimals);
+    searchWeightInput.addEventListener("input", filterAnimals);
+    searchHeightInput.addEventListener("input", filterAnimals);
+    searchColorInput.addEventListener("input", filterAnimals);
+    searchHabitatInput.addEventListener("input", filterAnimals);
+
+    animals.forEach((animal) => {
+      const animalCardHTML = generateAnimalCard(animal);
+      animalCardsContainer.insertAdjacentHTML("beforeend", animalCardHTML);
+    });
+  });
 }
