@@ -10,34 +10,24 @@ document.getElementById("submit").addEventListener("click", (event) => {
 });
 
 function createNewVisitor(fullName) {
-  if(validateFormInputs() == false){
+  if(!validateFormInputs()){
     return false;
   }
 
-  if(visitorExists(fullName) == false ){
+  if(!visitorExists(fullName)){
   return false;
   } 
   else{
-  let visitor = {name: fullName , coins: 50}
-  visitors.push(visitor);
-  const visitorsJson = JSON.stringify(visitors);
-
-  // Save the JSON string in local storage using the key "visitors"
-  localStorage.setItem("visitors", visitorsJson);
-
-  // Display success message or perform other actions (optional)
-  alert("Visitor added successfully!");
-  form.reset(); // Reset the form after successful submission
-  window.location.href="./login.html";
+    makeVisitor(fullName);
   
   }
+}
+
   document.getElementById("login").addEventListener("click", (event) => {
     event.preventDefault();
     window.location.href="./login.html";
   });
 
-  
-}
   const validateFormInputs = () => {
    // בודק האם האינפוטים קיימים ויש בהם ערך
    // מחזיר האם תקין או לא (בוליאני)
@@ -61,9 +51,20 @@ function createNewVisitor(fullName) {
     return true;
   }
 
-  // const makeVisitor = (name) => {
-  //   מקבל שם, בודק שאין אותו כבר במערך האורחים ומחזיר אובייקט אורח
-  // }
+   const makeVisitor = (fullName) => {
+    // מקבל שם, בודק שאין אותו כבר במערך האורחים ומחזיר אובייקט אורח
+    let visitor = {name: fullName , coins: 50}
+  visitors.push(visitor);
+  const visitorsJson = JSON.stringify(visitors);
+
+  // Save the JSON string in local storage using the key "visitors"
+  localStorage.setItem("visitors", visitorsJson);
+
+  // Display success message or perform other actions (optional)
+  alert("Visitor added successfully!");
+  form.reset(); // Reset the form after successful submission
+  window.location.href="./login.html";
+   }
  
 /**************************************
   מימשתי עבורכם את ההאזנה לאירוע שליחת טופס
