@@ -41,8 +41,38 @@ function showFavoriteAnimal(visitor) {
     console.log(visitor.name, "has not visited any animals yet.");
     return false;
   }
+  const animalVisitCounts = new Map();
+
+  // Count visits for each animal
+  for (const animal of visitor.visitedAnimals) {
+    const animalName = animal.name;
+    const currentCount = animalVisitCounts.get(animalName) || 0;
+    animalVisitCounts.set(animalName, currentCount + 1);
+  }
+
+  // Find the animal with the most visits (handle ties)
+  let mostVisitedAnimal;
+  let maxVisitCount = 0;
+  for (const [animalName, visitCount] of animalVisitCounts.entries()) {
+    if (visitCount > maxVisitCount) {
+      mostVisitedAnimal = animalName;
+      maxVisitCount = visitCount;
+    }
+     else if (visitCount === maxVisitCount) {
+      // In case of ties, append animal names to a string
+      mostVisitedAnimal = (mostVisitedAnimal || "") + (mostVisitedAnimal ? ", " : "") + animalName;
+    }
+  }
+
+  // Display the result
+  if (mostVisitedAnimal) {
+    console.log(visitor.name + "'s favorite animal(s) is/are:", mostVisitedAnimal);
+  } else {
+    console.log(visitor.name, "has no favorite animal (all animals visited the same number of times).");
+  }
+}
 
   
 
 
-}
+
