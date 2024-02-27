@@ -9,19 +9,38 @@
     <link rel="stylesheet" href="./zoostyle.css" />
   </head>
   <body>
-    <script src="zoo.js"></script>
     <script src="main.js"></script>
-    <div class="search-wrapper">
-      <label for="search">Search by name</label>
-      <input type="search" id="searchName" />
-      <label for="searchWeight">Search by weight</label>
-      <input type="search" id="searchWeight"/>
-      <label for="searchHeight">Search by height</label>
-      <input type="search" id="searchHeight"/>
-      <label for="searchColor">Search by color</label>
-      <input type="search" id="searchColor"/>
-      <label for="searchHabitat">Search by habitat</label>
-      <input type="search" id="searchHabitat"/>
+    <script src="zoo.js"></script>
+    
+    
+    <div id="filter-options">
+      <label for="name-filter">Name:</label>
+      <input type="text" id="name-filter" placeholder="Enter name or part of the name">
+
+      <label for="is-predator-filter">Predator:</label>
+      <select id="is-predator-filter">
+        <option value="">All</option>
+        <option value="true">Predator</option>
+        <option value="false">Herbivore</option>
+      </select>
+    
+      <label for="habitat-filter">Habitat:</label>
+      <select id="habitat-filter">
+        <option value="">All</option>
+        <option value="land">Land</option>
+        <option value="sea">Sea</option>
+      </select>
+    
+      <label for="weight-filter">Weight (Greater Than):</label>
+      <input type="number" id="weight-filter" min="0" placeholder="Enter weight">
+    
+      <label for="height-filter">Height (Greater Than):</label>
+      <input type="number" id="height-filter" min="0" placeholder="Enter height">
+    
+      <label for="color-filter">Color:</label>
+      <select id="color-filter">
+        <option value="">All</option>
+        </select>
     </div>
     <div class="animal-cards"></div>
     </template>
