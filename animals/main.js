@@ -213,30 +213,30 @@ function generateDataset() {
 
   console.log(visitors);
 }
-generateDataset();
+// generateDataset();
 
-function generateAnimalCard(animal) {
-  return `
-  <div class="card">
-    <div class="header">${animal.name}</div>
-    <div class="info">
-      <p>Weight: ${animal.weight}</p>
-      <p>Height: ${animal.height}</p>
-      <p>Color: ${animal.color}</p>
-      <p>Habitat: ${animal.habitat}</p>
-    </div>
-  </div>
-`;
-}
+// function generateAnimalCard(animal) {
+//   return `
+//   <div class="card">
+//     <div class="header">${animal.name}</div>
+//     <div class="info">
+//       <p>Weight: ${animal.weight}</p>
+//       <p>Height: ${animal.height}</p>
+//       <p>Color: ${animal.color}</p>
+//       <p>Habitat: ${animal.habitat}</p>
+//     </div>
+//   </div>
+// `;
+// }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const animalCardsContainer = document.querySelector(".animal-cards");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const animalCardsContainer = document.querySelector(".animal-cards");
 
-  animals.forEach((animal) => {
-    const animalCardHTML = generateAnimalCard(animal);
-    animalCardsContainer.insertAdjacentHTML("beforeend", animalCardHTML);
-  });
-});
+//   animals.forEach((animal) => {
+//     const animalCardHTML = generateAnimalCard(animal);
+//     animalCardsContainer.insertAdjacentHTML("beforeend", animalCardHTML);
+//   });
+// });
 
 //********************** */
 function logout() {
