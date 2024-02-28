@@ -3,82 +3,122 @@ let visitors = [
   {
     name: "John Smith",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Emily Johnson",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Michael Williams",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Jessica Brown",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Christopher Jones",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Ashley Davis",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Matthew Miller",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Amanda Wilson",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "David Moore",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Sarah Taylor",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "James Anderson",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Jennifer Thomas",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Robert Jackson",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Elizabeth White",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Daniel Harris",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Melissa Martin",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "William Thompson",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Linda Garcia",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Joseph Martinez",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
   {
     name: "Karen Robinson",
     coins: 50,
+    visitedAnimals: [],
+    FeededAnimals: [],
   },
 ];
 
@@ -173,6 +213,30 @@ function generateDataset() {
 
   console.log(visitors);
 }
+generateDataset();
+
+function generateAnimalCard(animal) {
+  return `
+  <div class="card">
+    <div class="header">${animal.name}</div>
+    <div class="info">
+      <p>Weight: ${animal.weight}</p>
+      <p>Height: ${animal.height}</p>
+      <p>Color: ${animal.color}</p>
+      <p>Habitat: ${animal.habitat}</p>
+    </div>
+  </div>
+`;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const animalCardsContainer = document.querySelector(".animal-cards");
+
+  animals.forEach((animal) => {
+    const animalCardHTML = generateAnimalCard(animal);
+    animalCardsContainer.insertAdjacentHTML("beforeend", animalCardHTML);
+  });
+});
 
 //********************** */
 function logout() {
