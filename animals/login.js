@@ -1,9 +1,8 @@
 window.onload = function() {
   generateDataset();
 };
+
 function loginAsVisitor(visitorName) {
-  // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
-  // שמרו את האורח שבחרתם, בלוקל סטורג' כך שבכל העמודים נדע מי האורח הנוכחי
   const selectedVisitor = visitors.find((v) => v.name === visitorName);
 
   if (selectedVisitor) {
@@ -41,10 +40,6 @@ const getVisitorHTMLCard = (visitor) => {
   return wrapper;
 };
 
-const handleVisitorClick = (visitor) => {
-  dialog.innerHTML = "";
-  dialog.append(getVisitorHTMLCard(visitor));
-};
 
 const getSearchBox = () => {
   const queryInput = document.createElement("input");

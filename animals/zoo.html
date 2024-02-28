@@ -8,6 +8,11 @@
     <script src="./main.js"></script>
   </head>
   <body>
+    <div class="filter-container">
+      <label for="name">Name:</label>
+       <input type="text" id="name" placeholder="Search by name" oninput="setFilter('name',this.value)" >
+      <label for="isPredator">Predator:</label>
+      <select id="isPredator" onchange="setFilter('isPredator', this.value)">
     <div class="animals-container"></div>
     
     <div class="filter-container">
@@ -16,8 +21,12 @@
         <option value="">All</option>
         <option value="true">True</option>
         <option value="false">False</option>
+        <option value="true">True</option>
+        <option value="false">False</option>
       </select>
     
+      <label for="habitat">Habitat:</label>
+      <select id="habitat" onchange="setFilter('habitat', this.value)">
       <label for="habitat">Habitat:</label>
       <select id="habitat" onchange="setFilter('habitat', this.value)">
         <option value="">All</option>
@@ -27,10 +36,16 @@
     
       <label for="weight">Weight (greater than):</label>
       <input type="number" id="weight" min="0" onchange="setFilter('weight', parseInt(this.value))">
+      <label for="weight">Weight (greater than):</label>
+      <input type="number" id="weight" min="0" onchange="setFilter('weight', parseInt(this.value))">
     
       <label for="height">Height (greater than):</label>
       <input type="number" id="height" min="0" onchange="setFilter('height', parseInt(this.value))">
+      <label for="height">Height (greater than):</label>
+      <input type="number" id="height" min="0" onchange="setFilter('height', parseInt(this.value))">
     
+      <label for="color">Color:</label>
+      <select id="color" onchange="setFilter('color', this.value)">
       <label for="color">Color:</label>
       <select id="color" onchange="setFilter('color', this.value)">
         <option value="">All</option>
