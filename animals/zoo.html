@@ -6,25 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zoo</title>
     <script src="./main.js"></script>
-    <link rel="stylesheet" type="text/css" href="animals/zoo.css" />
-    <link rel="stylesheet" href="zoostyle.css" />
+    <link rel="stylesheet" href="./zoostyle.css" />
   </head>
   <body>
     <script src="zoo.js"></script>
     <script src="main.js"></script>
     <div class="search-wrapper">
       <label for="search">Search by name</label>
-      <input type="search" id="searchName" />
+      <input
+        type="search"
+        id="searchName"
+        oninput="setFilter('name', this.value)"
+      />
       <label for="searchWeight">Search by weight</label>
-      <input type="search" id="searchWeight"/>
+      <input
+        type="search"
+        id="searchWeight"
+        oninput="setFilter('weight', parseFloat(this.value))"
+      />
       <label for="searchHeight">Search by height</label>
-      <input type="search" id="searchHeight"/>
+      <input
+        type="search"
+        id="searchHeight"
+        oninput="setFilter('height', parseFloat(this.value))"
+      />
       <label for="searchColor">Search by color</label>
-      <input type="search" id="searchColor"/>
+      <input
+        type="search"
+        id="searchColor"
+        oninput="setFilter('color', this.value)"
+      />
       <label for="searchHabitat">Search by habitat</label>
-      <input type="search" id="searchHabitat"/>
+      <input
+        type="search"
+        id="searchHabitat"
+        oninput="setFilter('habitat', this.value)"
+      />
     </div>
     <div class="animal-cards"></div>
-    </template>
   </body>
 </html>
