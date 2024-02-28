@@ -1,194 +1,100 @@
 
-const animalsElement = document.getElementById("animal-cards");
-const filterForm = document.getElementById("filter-form");
-const nameInput = document.getElementById("name-filter");
-const weightSelect = document.getElementById("weight-filter");
-const habitatSelect = document.getElementById("habitat-filter");
-const predatorSelect = document.getElementById("is-predator-filter");
-const heightInput = document.getElementById("height-filter");
-const colorSelect = document.getElementById("color-filter");
+function visitAnimal(animalName) {
+  // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
+  // שמרו את האורח שבחרתם, בלוקל סטורג' כך שבכל העמודים נדע מי האורח הנוכחי
+  const selectedAnimal = animals.find((a) => a.name === animalName);
 
-window.onload = function() {
-  generateDataset();
-  populateColorOptions();
-};
-
-window.addEventListener("DOMContentLoaded", function() {
-  nameInput.addEventListener("input", (event) => {
-    const filters = getFilters();
-    filters.name = event.target.value;
-    setFilters(filters);
-    renderAvailableAnimals();
-  });
-
-  weightSelect.addEventListener("change", (event) => {
-    const filters = getFilters();
-    filters.weight = event.target.value;
-    setFilters(filters);
-    renderAvailableAnimals();
-  });
-  
-  habitatSelect.addEventListener("change", (event) => {
-    const filters = getFilters();
-    filters.habitat = event.target.value;
-    setFilters(filters);
-    renderAvailableAnimals();
-  });
-  
-  predatorSelect.addEventListener("change", (event) => {
-    const filters = getFilters();
-    filters.isPredator
-    setFilters(filters);
-    renderAvailableAnimals();
-  });
-
-});
-
-function populateColorOptions() {
-  const colorSelect = document.getElementById("color-filter");
-  if (colorSelect) {
-    const animals = JSON.parse(localStorage.getItem("animals")) || [];
-    const uniqueColors = [...new Set(animals.map((animal) => animal.color))];
-
-    uniqueColors.forEach((color) => {
-      const option = document.createElement("option");
-      option.value = color;
-      option.text = color;
-      colorSelect.appendChild(option);
-    });
-  } else {
-    // Handle scenario where colorSelect is not yet available
-    console.warn("Color select element not found. Options not populated.");
+  if (selectedAnimal) {
+    localStorage.setItem("currentAnimal", JSON.stringify(selectedAnimal));
+    window.location.href = "./animal.html";
   }
 }
 
-function renderAvailableAnimals() {
-  const animals = JSON.parse(localStorage.getItem("animals")) || [];
-  const filters = getFilters();
 
-  const filteredAnimals = animals.filter((animal) => {
-    let match = true;
+let currentFilters = {};
+let filteredAnimals = []; 
 
-    // Check name filter (case-insensitive)
-    if (filters.name && !animal.name.toLowerCase().includes(filters.name.toLowerCase())) {
-      match = false;
-    }
-
-    // Check predator filter
-    if (filters.isPredator && animal.isPredator !== (filters.isPredator === "true")) {
-      match = false;
-    }
-
-    // Check habitat filter
-    if (filters.habitat && animal.habitat !== filters.habitat) {
-      match = false;
-    }
-
-    // Check weight filter
-    if (filters.weight && animal.weight <= parseInt(filters.weight)) {
-      match = false;
-    }
-
-    // Check height filter
-    if (filters.height && animal.height <= parseInt(filters.height)) {
-      match = false;
-    }
-
-    // Check color filter
-    if (filters.color && animal.color !== filters.color) {
-      match = false;
-    }
-
-    return match;
-  });
-
-  // Render the filtered animals
-  animalsElement.innerHTML = ""; // Clear existing content
-  filteredAnimals.forEach((animal) => {
-    const cardElement = document.createElement("div");
-    cardElement.classList.add("animal-card");
-    cardElement.innerHTML = `
-      <h3><span class="math-inline">\{animal\.name\}</h3\>
-<img src\="images/</span>{animal.name}.jpg" alt="${animal.name}" />
-      <p>
-        ${animal.isPredator ? "טורף" : "צמחוני"} | ${animal.habitat} | משקל: ${animal.weight} | גובה: ${animal.height} | צבע: <span class="math-inline">\{animal\.color\}
-</p\>
-<button onclick\="visitAnimal\('</span>{animal.name}')">לְבַקֵר</button>
-    `;
-    animalsElement.appendChild(cardElement);
-  });
-}
-
-
-function visitAnimal(animalName) {
-  // ממשו את הלוגיקה של מעבר לעמוד חיה עבור החיה הספציפית שנבחרה
-  // שמרו בלוקל סטורג' את החיה שנבחרה, כך שבעמוד החיה נוכל לשלוף אותה מהסטורג' ולהציגה בהתאם
-  localStorage.setItem("selectedAnimal", JSON.stringify(animalName));
-  window.location.href = "animal.html";
-}
-
-function getFilters() {
-  return JSON.parse(localStorage.getItem("filters")) || {};
-}
-
-function setFilters(filters) {
-  const filters = getFilters();
-  filters[filterKey] = filterValue;
-  setFilters(filters);
-
-  // Perform filtering and rendering
-  const filteredAnimals = filterAnimals(animals, filters);
-  renderAvailableAnimals(filteredAnimals);
-}
+function setFilter(filterKey, filterValue) {
+  currentFilters[filterKey] = filterValue !== "" ? filterValue : undefined;
   
+  localStorage.setItem("currentFilters", JSON.stringify(currentFilters));
 
+  filterAnimals();
+}
 
-  // document.addEventListener("DOMContentLoaded", function () {
-  //   const animalCardsContainer = document.querySelector(".animal-cards");
-  //   const searchNameInput = document.getElementById("searchName");
-  //   const searchWeightInput = document.getElementById("searchWeight");
-  //   const searchHeightInput = document.getElementById("searchHeight");
-  //   const searchColorInput = document.getElementById("searchColor");
-  //   const searchHabitatInput = document.getElementById("searchHabitat");
+function filterAnimals() {
+  filteredAnimals = animals.filter((animal) => {
+    if (currentFilters.name && !animal.name.includes(currentFilters.name)) {
+      return false;}
+    if (currentFilters.isPredator !== undefined && animal.isPredator !== (currentFilters.isPredator === "true")) {
+      return false;
+    }
+    if (currentFilters.habitat && animal.habitat !== currentFilters.habitat) {
+      return false;
+    }
+    if (currentFilters.weight && animal.weight <= parseInt(currentFilters.weight)) {
+      return false;
+    }
+    if (currentFilters.height && animal.height <= parseInt(currentFilters.height)) {
+      return false;
+    }
+    if (currentFilters.color && animal.color !== currentFilters.color) {
+      return false;
+    }
+    return true;
+  });
 
-    // function filterAnimals() {
-    //   const filteredAnimals = animals.filter((animal) => {
-    //     return (
-    //       (searchNameInput.value === "" ||
-    //         animal.name
-    //           .toLowerCase()
-    //           .includes(searchNameInput.value.toLowerCase())) &&
-    //       (searchWeightInput.value === "" ||
-    //         animal.weight.toString().includes(searchWeightInput.value)) &&
-    //       (searchHeightInput.value === "" ||
-    //         animal.height.toString().includes(searchHeightInput.value)) &&
-    //       (searchColorInput.value === "" ||
-    //         animal.color
-    //           .toLowerCase()
-    //           .includes(searchColorInput.value.toLowerCase())) &&
-    //       (searchHabitatInput.value === "" ||
-    //         animal.habitat
-    //           .toLowerCase()
-    //           .includes(searchHabitatInput.value.toLowerCase()))
-    //     );
-    //   });
+  renderAvailableAnimals();
+}
 
-    //   animalCardsContainer.innerHTML = "";
-    //   filteredAnimals.forEach((animal) => {
-    //     const animalCardHTML = generateAnimalCard(animal);
-    //     animalCardsContainer.insertAdjacentHTML("beforeend", animalCardHTML);
-    //   });
-    // }
+function loadSavedFilters() {
+  const storedFilters = JSON.parse(localStorage.getItem("currentFilters"));
+  if (storedFilters) {
+    currentFilters = storedFilters;
+    for (const filterKey in currentFilters) {
+      const filterValue = currentFilters[filterKey];
+      document.getElementById(filterKey).value = filterValue;
+    }
+  }
 
-    // searchNameInput.addEventListener("input", filterAnimals);
-    // searchWeightInput.addEventListener("input", filterAnimals);
-    // searchHeightInput.addEventListener("input", filterAnimals);
-    // searchColorInput.addEventListener("input", filterAnimals);
-    // searchHabitatInput.addEventListener("input", filterAnimals);
+  const storedFilteredAnimals = JSON.parse(localStorage.getItem("filteredAnimals"));
+  if (storedFilteredAnimals) {
+    filteredAnimals = storedFilteredAnimals;
+  } else {
+    filteredAnimals = animals;
+  }
 
-  //   animals.forEach((animal) => {
-  //     const animalCardHTML = generateAnimalCard(animal);
-  //     animalCardsContainer.insertAdjacentHTML("beforeend", animalCardHTML);
-  //   });
-  // });
+  filterAnimals();
+}
+
+document.addEventListener("DOMContentLoaded", loadSavedFilters);
+
+const renderAvailableAnimals = () => {
+  const animalsContainer = document.querySelector(".animals-container");
+  animalsContainer.innerHTML = "";
+
+  filteredAnimals.forEach((animal) => {
+    const card = document.createElement("div");
+    card.classList.add("animal-card");
+
+    const image = document.createElement("img");
+    image.src = `images/${animal.name}.jpg`; 
+    card.appendChild(image);
+
+    const name = document.createElement("h3");
+    name.textContent = animal.name;
+    card.appendChild(name);
+
+    const details = document.createElement("p");
+    details.textContent = `Habitat: ${animal.habitat}, Weight: ${animal.weight}kg, Height: ${animal.height}cm`;
+    card.appendChild(details);
+
+const visitAnimalButton = document.createElement("button");
+visitAnimalButton.innerText='Visit';
+visitAnimalButton.addEventListener("click", () => visitAnimal(animal.name));
+    card.appendChild(visitAnimalButton);
+
+animalsContainer.appendChild(card);
+  });
+};
 
