@@ -214,7 +214,6 @@ function generateDataset() {
   console.log(visitors);
 }
 generateDataset();
-generateDataset();
 
 function logout() {
   //ממשו את הלוגיקה שמתנתקת מאורח מחובר

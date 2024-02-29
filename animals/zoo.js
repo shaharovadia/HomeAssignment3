@@ -24,8 +24,10 @@ function setFilter(filterKey, filterValue) {
 
 function filterAnimals() {
   filteredAnimals = animals.filter((animal) => {
-    if (currentFilters.name && !animal.name.includes(currentFilters.name)) {
-      return false;}
+    if (currentFilters.name && !animal.name.toLowerCase().includes(currentFilters.name.toLowerCase())) {
+      return false;
+    }
+    
     if (currentFilters.isPredator !== undefined && animal.isPredator !== (currentFilters.isPredator === "true")) {
       return false;
     }
