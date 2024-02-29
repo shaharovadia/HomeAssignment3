@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup</title>
-    <script src="./main.js"></script>
-  </head>
-  <body>
-    <form id="create-visitor-form">
-      <h1>Register form</h1>
-      <label for="fname">First name:</label><br>
-      <input type="text" id="fname" name="fname"><br>
-      <label for="lname">Last name:</label><br>
-      <input type="text" id="lname" name="lname"><br>
-      <button type="submit" id="submit">Submit</button>
-      <button type="Login" id="login">Login</button>
-
+    
       <!-- צרו טופס יצירת אורח חדש -->
       <!-- לאחר יצירה, הוסיפו אותו למערך האורחים ושמרו את מערך האורחים המעודכן בלוקל סטורג' -->
       <!-- עברו לעמוד התחברות כדי לבחור את האורח שאיתו תכנסו לגן החיות -->
       <!-- ממשו את הלוגיקה של היצירה, בפונקציה שהוגדרה מראש בקובץ signup.js -->
+      <!-- <script src="./signup.js"></script> -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+     <script src="./main.js"></script>
+  </head>
+  <body>
+
+  </div>
+  <form id="create-visitor-form1">
+      <h3>Sign up here</h3>
+     
+      <label for="username">First name</label>
+      <input type="text" placeholder="Please enter first name" id="FirstName" name="FirstName">
+
+      <label for="password">Last name</label>
+      <input type="text" placeholder="please enter last name" id="LastName" name="LastName">
+
+      <button type="button" id="submit1">Submit</button>
+      <button type="button" id="login1">Login</button>
       <script src="./signup.js"></script>
-    </form>
   </body>
 </html>
+
+
+

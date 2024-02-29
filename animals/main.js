@@ -23,6 +23,7 @@ let visitors = [
     coins: 50,
     visitedAnimals: [],
     FeededAnimals: [],
+    thumbImage:"https://oyster.ignimgs.com/mediawiki/apis.ign.com/mario-kart-for-wii-u/b/bf/Mk8iconmario.png?width=325",
   },
   {
     name: "Christopher Jones",
