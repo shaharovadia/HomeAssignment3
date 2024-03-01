@@ -1,0 +1,73 @@
+@keyframes flashRed {
+    0% { background-color: transparent; }
+    50% { background-color: red; }
+    100% { background-color: transparent; }
+  }
+  
+  #eatenDialog {
+    animation: flashRed 2s infinite;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-x: hidden;
+    text-align: center;
+    width : 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #eatenDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  #eatenDialog #goToLogin {
+    background-color: #5e2f15;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  #eatenDialog #goToLogin:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add 'splatter' effect */
+  #eatenDialog[open]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.pngitem.com/pimgs/b/1-17920_blood-splat-png-blood-stain-blood-spatter-transparent.png'); /* Path to a blood splatter image */
+    background-repeat: no-repeat;
+    background-position: left center;
+    pointer-events: none; /* Allows clicks to pass through */
+    opacity: 0.5; /* Adjust for desired intensity */
+  }
+
+  #escapedDialog {
+    background-color: rgb(242, 242, 242); /* Light grey background */
+    color: rgb(51, 51, 51); /* Dark grey text */
+    border: 1px solid rgb(204, 204, 204); /* Subtle border */
+  }
+  
+  #escapedDialog button {
+    background-color: rgb(173, 216, 230); /* Soft blue button */
+    color: white;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #escapedDialog button:hover {
+    background-color: rgb(0, 105, 180); /* Darker blue on hover */
+  }

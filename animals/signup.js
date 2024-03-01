@@ -55,7 +55,7 @@ const visitorExists1 = (fullName1) => {
 
  const makeVisitor1 = (fullName1) => {
      // מקבל שם, בודק שאין אותו כבר במערך האורחים ומחזיר אובייקט אורח
-    let visitor = {name: fullName1 , coins: 50, visitedAnimals : [], thumbImage: "https://www.miicharacters.com/miis/thumb/1370_bowser.jpg" }
+    let visitor = {name: fullName1 , coins: 50, thumbImage: "https://www.miicharacters.com/miis/thumb/1370_bowser.jpg"}
     visitors.push(visitor);
     const visitorsJson = JSON.stringify(visitors);
      // Save the JSON string in local storage using the key "visitors"

@@ -6,16 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Animal</title>
     <script src="./main.js"></script>
+    <link rel="stylesheet" href="./animal.css">
   </head>
   <body>
     <div class="visitedAnimal">
-      <button class="visitedAnimal" id="feed-animal" onclick="feedAnimal()">Feed me</button>
       <div id="image">
         <!-- show here the animal image -->
       </div>
-        
     </div>
     <div id="related-animals"></div>
+    <dialog id="eatenDialog">
+      <p id="eatenMessage"></p>
+      <button id="goToLogin">Go to Login</button>
+    </dialog>
+    <dialog id="escapedDialog">
+      <p id="escapedMessage"></p>
+    </dialog>
     <script src="./animal.js"></script>
   </body>
 </html>

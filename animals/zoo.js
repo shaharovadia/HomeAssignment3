@@ -1,8 +1,22 @@
 
 function visitAnimal(animalName) {
-  // תממשו את הלוגיקה של בחירת אורח שנכנס לגן החיות
-  // שמרו את האורח שבחרתם, בלוקל סטורג' כך שבכל העמודים נדע מי האורח הנוכחי
   const selectedAnimal = animals.find((a) => a.name === animalName);
+
+  const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  if (!currentVisitor.visitedAnimals) {
+    currentVisitor.visitedAnimals = {};
+  }
+
+  // Increment the count for the visited animal
+  if (currentVisitor.visitedAnimals[animalName]) {
+    currentVisitor.visitedAnimals[animalName]++;
+  } else {
+    currentVisitor.visitedAnimals[animalName] = 1;
+  }
+   // Save the updated visitor information
+   localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
+   updateVisitorArray(currentVisitor);
+ 
 
   if (selectedAnimal) {
     localStorage.setItem("currentAnimal", JSON.stringify(selectedAnimal));
@@ -10,6 +24,23 @@ function visitAnimal(animalName) {
   }
 }
 
+function updateVisitorArray(updatedVisitor) {
+  let visitors = JSON.parse(localStorage.getItem("visitors")); // Retrieve the existing visitors array
+  if (visitors) {
+    // Find the index of the visitor to update
+    const index = visitors.findIndex(visitor => visitor.name === updatedVisitor.name);
+    if (index !== -1) {
+      visitors[index] = updatedVisitor; // Update the visitor's details
+    } else {
+      // Optionally handle the case where the visitor isn't found
+      console.log("Visitor not found.");
+    }
+    // Save the updated visitors array back to local storage
+    localStorage.setItem("visitors", JSON.stringify(visitors));
+  } else {
+    console.log("No visitors array found in local storage.");
+  }
+}
 
 let currentFilters = {};
 let filteredAnimals = []; 

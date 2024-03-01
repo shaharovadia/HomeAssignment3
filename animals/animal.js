@@ -17,7 +17,10 @@
       container.appendChild(createElementWithText('p', `Height: ${animalData.height} cm`));
       container.appendChild(createElementWithText('p', `Color: ${animalData.color}`));
       container.appendChild(createElementWithText('p', `Predator: ${animalData.isPredator ? "Yes" : "No"}`));
-      // container.appendChild(createElementWithText('button','Feed Me'))
+      container.appendChild(createElementWithText('button','Feed Me'));
+      if (feedButton) {
+        feedButton.addEventListener('click', feedAnimal);
+      }
     }
   }
   
@@ -26,6 +29,8 @@
   function createElementWithText(tag, text) {
     const element = document.createElement(tag);
     element.textContent = text;
+    if(tag==='button')
+    {element.id = 'feedButton' ;}
     return element;
   }
   
@@ -34,12 +39,6 @@
     renderRelatedAnimals();
   } );
   
-  document.addEventListener('DOMContentLoaded', () => {
-    const feedButton = document.getElementById('feed-animal');
-    if (feedButton) {
-      feedButton.addEventListener('click', feedAnimal);
-    }
-  });
 
   function renderRelatedAnimals() {
     const currentAnimal = JSON.parse(localStorage.getItem("currentAnimal"));
@@ -74,9 +73,26 @@
   
   function visitAnimal(animalName){
     const selectedAnimal = animals.find((a) => a.name === animalName);
-    localStorage.setItem("currentAnimal", JSON.stringify(selectedAnimal));
-    renderAnimal();
-    renderRelatedAnimals();
+  localStorage.setItem("currentAnimal", JSON.stringify(selectedAnimal));
+
+  const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  if (!currentVisitor.visitedAnimals) {
+    currentVisitor.visitedAnimals = {};
+  }
+
+  // Increment the count for the visited animal
+  if (currentVisitor.visitedAnimals[animalName]) {
+    currentVisitor.visitedAnimals[animalName]++;
+  } else {
+    currentVisitor.visitedAnimals[animalName] = 1;
+  }
+
+  // Save the updated visitor information
+  localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
+  updateVisitorArray(currentVisitor);
+
+  renderAnimal();
+  renderRelatedAnimals();
   }
 
 function feedAnimal() {
@@ -85,25 +101,71 @@ function feedAnimal() {
 
   if (currentVisitor && currentVisitor.coins >= 2) {
     currentVisitor.coins -= 2; // Deduct 2 coins
+    if (!currentVisitor.fedAnimals) {
+      currentVisitor.fedAnimals = []; // Initialize the array if it doesn't exist
+    }
+    if (!currentVisitor.fedAnimals.includes(currentAnimal.name)) {
+      currentVisitor.fedAnimals.push(currentAnimal.name);
+    }
     alert("Thank you for feeding the animal!");
     // Update visitor in local storage
     localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
     updateVisitorArray(currentVisitor); // Assume this function updates the visitors array and handles storage
   } else {
     if (currentAnimal.isPredator) {
-      alert("The animal is a predator and you've been eaten!");
+     visitorGotEaten();
     } else {
-      alert("The animal has run away!");
+      animalEscaped();
     }
   }
 }
 
-function visitorGotEaten() {
-  // ממשו את הלוגיקה של חיה שטורפת אורח
+function visitorGotEaten() {const currentAnimal = JSON.parse(localStorage.getItem("currentAnimal"));
+const visitors = JSON.parse(localStorage.getItem("visitors"));
+const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+
+// 1) Delete the visitor from the visitors array in the local storage
+const updatedVisitors = visitors.filter(visitor => visitor.name !== currentVisitor.name);
+localStorage.setItem("visitors", JSON.stringify(updatedVisitors));
+
+// 2) Configure and show the dialog modal
+const dialog = document.getElementById("eatenDialog");
+const eatenMessage = document.getElementById("eatenMessage");
+eatenMessage.textContent = `The ${currentAnimal.name} has eaten you!`; // Set the message
+dialog.showModal(); // Open the dialog
+
+// Attach event to the "Go to Login" button inside the dialog
+const goToLoginButton = document.getElementById("goToLogin");
+goToLoginButton.addEventListener("click", () => {
+  dialog.close(); // Close the dialog
+  window.location.href = 'login.html'; // Redirect to the login page
+});
+ 
 }
 
 function animalEscaped() {
-  //ממשו את הלוגיקה של חיה שבורחת מגן החיות
+  const currentAnimal = JSON.parse(localStorage.getItem("currentAnimal"));
+  let animals = JSON.parse(localStorage.getItem("animals"));
+
+  // 1) Delete the animal from the animals array in local storage
+  const updatedAnimals = animals.filter(animal => animal.name !== currentAnimal.name);
+  localStorage.setItem("animals", JSON.stringify(updatedAnimals));
+
+  // 2) Configure and show the dialog modal
+  const dialog = document.getElementById("escapedDialog"); // Ensure you have a dialog element with id="escapedDialog" in your HTML
+  const escapedMessage = document.getElementById("escapedMessage"); // And an element with id="escapedMessage" inside the dialog for the message
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "Back to the zoo..";
+  
+  escapedMessage.textContent = `The ${currentAnimal.name} has escaped!`; // Set the message
+  dialog.appendChild(closeButton); // Append the close button to the dialog
+  dialog.showModal(); // Open the dialog
+
+  // Event listener for the close button
+  closeButton.addEventListener("click", () => {
+    dialog.close(); // Close the dialog
+    window.location.href = './zoo.html'; // Redirect to the zoo page
+  });
 }
  
 function updateVisitorArray(updatedVisitor) {
