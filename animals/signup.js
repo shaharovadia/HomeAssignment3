@@ -42,10 +42,10 @@ if (!firstNameInput1.value || !lastNameInput1.value) {
 return true;
 }
 const visitorExists1 = (fullName1) => {
-  const existingVisitor = visitors.find(
+  const existingVisitor1 = visitors.find(
     (visitor) => visitor.name === fullName1
   );
-  if (existingVisitor) {
+  if (existingVisitor1) {
     alert("This name is already registered. Please choose a different name.");
     return false; // Prevent form submission
   }
@@ -55,7 +55,7 @@ const visitorExists1 = (fullName1) => {
 
  const makeVisitor1 = (fullName1) => {
      // מקבל שם, בודק שאין אותו כבר במערך האורחים ומחזיר אובייקט אורח
-    let visitor = {name: fullName1 , coins: 50, visitedAnimals : []}
+    let visitor = {name: fullName1 , coins: 50, visitedAnimals : [], thumbImage: "https://www.miicharacters.com/miis/thumb/1370_bowser.jpg" }
     visitors.push(visitor);
     const visitorsJson = JSON.stringify(visitors);
      // Save the JSON string in local storage using the key "visitors"
