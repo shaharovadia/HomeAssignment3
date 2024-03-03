@@ -124,7 +124,7 @@ let animals = [
     isPredator: false,
     weight: 100,
     height: 120,
-    color: "brown",
+    color: "yellow",
     habitat: "land",
   },
   {
@@ -132,7 +132,7 @@ let animals = [
     isPredator: true,
     weight: 100,
     height: 120,
-    color: "brown",
+    color: "orange",
     habitat: "land",
   },
   {
@@ -156,7 +156,7 @@ let animals = [
     isPredator: false,
     weight: 100,
     height: 120,
-    color: "brown",
+    color: "black",
     habitat: "sea",
   },
   {
@@ -164,7 +164,7 @@ let animals = [
     isPredator: false,
     weight: 100,
     height: 120,
-    color: "brown",
+    color: "black&white",
     habitat: "land",
   },
   {
@@ -172,7 +172,7 @@ let animals = [
     isPredator: true,
     weight: 100,
     height: 120,
-    color: "brown",
+    color: "yellow",
     habitat: "land",
   },
 ];
