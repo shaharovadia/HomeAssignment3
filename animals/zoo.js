@@ -150,16 +150,19 @@ const renderAvailableAnimals = () => {
     card.appendChild(image);
 
     const name = document.createElement("h3");
+    name.id = "textbox";
     name.textContent = animal.name;
     card.appendChild(name);
 
     const details = document.createElement("p");
     details.textContent = `Habitat: ${animal.habitat}, Weight: ${animal.weight}kg, Height: ${animal.height}cm, Color: ${animal.color}`;
+    details.id = "textbox";
     card.appendChild(details);
 
     const visitAnimalButton = document.createElement("button");
     visitAnimalButton.innerText = "Visit";
     visitAnimalButton.addEventListener("click", () => visitAnimal(animal.name));
+    visitAnimalButton.id = "textbox";
     card.appendChild(visitAnimalButton);
 
     animalsContainer.appendChild(card);
