@@ -47,10 +47,11 @@ const getSearchBox = () => {
   queryInput.placeholder = "Search visitor";
   queryInput.className = "form-control my-4";
   queryInput.oninput = (e) => {
-    visitorsForView = visitors.filter((visitor) =>
-      visitor.name.includes(e.target.value)
-    );
-    renderVisitors();
+    const searchValue = e.target.value.toLowerCase();
+  visitorsForView = visitors.filter((visitor) =>
+    visitor.name.toLowerCase().includes(searchValue)
+  );
+  renderVisitors();
   };
   return queryInput;
 };
@@ -61,7 +62,6 @@ const getEmptyCardsHTMLTemplate = () => {
 
   const template = `
     <h2>No Visitors Found</h2>
-    <p>We're sorry, but no products match your search or filter criteria.</p>
     <button id="clear-filter-btn" class="btn btn-dark">Clear search text</button>
     `;
   templateWrapper.innerHTML = template;

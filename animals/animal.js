@@ -18,6 +18,10 @@
       container.appendChild(createElementWithText('p', `Color: ${animalData.color}`));
       container.appendChild(createElementWithText('p', `Predator: ${animalData.isPredator ? "Yes" : "No"}`));
       container.appendChild(createElementWithText('button','Feed Me'));
+      const image = document.createElement('img');
+    image.src = `./images/${animalData.name}.jpg`;
+    image.alt = `Image of ${animalData.name}`;
+    container.appendChild(image);
       if (feedButton) {
         feedButton.addEventListener('click', feedAnimal);
       }
@@ -32,11 +36,13 @@
     if(tag==='button')
     {element.id = 'feedButton' ;}
     return element;
+    
   }
   
   document.addEventListener("DOMContentLoaded",() => {
     renderAnimal();
     renderRelatedAnimals();
+    createNavBar();
   } );
   
 
