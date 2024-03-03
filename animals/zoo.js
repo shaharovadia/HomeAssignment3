@@ -121,6 +121,7 @@ function loadSavedFilters() {
 document.addEventListener("DOMContentLoaded", () => {
   loadSavedFilters();
   populateColorOptions(); 
+  createNavBar();
 });
 
 const renderAvailableAnimals = () => {
