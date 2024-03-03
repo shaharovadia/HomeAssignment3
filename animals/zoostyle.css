@@ -1,5 +1,9 @@
-* {
-  background: rgb(249, 219, 92);
+body {
+  background-size: contain;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #080710;
+  background-image: url(./images/ZooBackground.jpg) ;
 }
 .search-wrapper {
   display: inline;
