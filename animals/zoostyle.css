@@ -1,3 +1,6 @@
+* {
+  background: rgb(249, 219, 92);
+}
 .search-wrapper {
   display: inline;
   flex-direction: column;
@@ -11,8 +14,8 @@ input {
 .animals-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, minmax(100px, 300px));
-  grid-gap: 1rem;
+  grid-template-rows: repeat(3, minmax(300px, 600px));
+  grid-gap: 2.2rem;
   grid-auto-flow: dense;
   border: 2px solid rgb(241, 224, 151);
   padding: 14px 6px 10px;
@@ -20,7 +23,9 @@ input {
   transition: transform 100ms linear 0s;
 }
 .animal-card {
-  background: red;
+  border: 2px solid rgb(235, 208, 87);
+  padding: 10px;
+  border-radius: 7px;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -31,14 +36,18 @@ input {
   background-color: white;
   padding: 0.5rem;
 }
-
+img {
+  border-radius: 10px;
+  width: 100%;
+  height: 70%;
+}
 .card .header {
   margin-bottom: 0.25rem;
 }
 
 .card.info {
   font-size: 0.8rem;
-  color: #777;
+  color: #ffafaf;
 }
 
 .hide {

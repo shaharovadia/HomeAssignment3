@@ -1,4 +1,3 @@
-
 function visitAnimal(animalName) {
   const selectedAnimal = animals.find((a) => a.name === animalName);
 
@@ -13,10 +12,9 @@ function visitAnimal(animalName) {
   } else {
     currentVisitor.visitedAnimals[animalName] = 1;
   }
-   // Save the updated visitor information
-   localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
-   updateVisitorArray(currentVisitor);
- 
+  // Save the updated visitor information
+  localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
+  updateVisitorArray(currentVisitor);
 
   if (selectedAnimal) {
     localStorage.setItem("currentAnimal", JSON.stringify(selectedAnimal));
@@ -25,17 +23,17 @@ function visitAnimal(animalName) {
 }
 
 function populateColorOptions() {
-  const colorSelect = document.getElementById('color'); // Adjust ID if necessary
+  const colorSelect = document.getElementById("color"); // Adjust ID if necessary
   const uniqueColors = new Set();
 
-  animals.forEach(animal => {
+  animals.forEach((animal) => {
     if (animal.color) {
       uniqueColors.add(animal.color);
     }
   });
 
-  uniqueColors.forEach(color => {
-    const option = document.createElement('option');
+  uniqueColors.forEach((color) => {
+    const option = document.createElement("option");
     option.value = color;
     option.textContent = color.charAt(0).toUpperCase() + color.slice(1);
     colorSelect.appendChild(option);
@@ -46,7 +44,9 @@ function updateVisitorArray(updatedVisitor) {
   let visitors = JSON.parse(localStorage.getItem("visitors")); // Retrieve the existing visitors array
   if (visitors) {
     // Find the index of the visitor to update
-    const index = visitors.findIndex(visitor => visitor.name === updatedVisitor.name);
+    const index = visitors.findIndex(
+      (visitor) => visitor.name === updatedVisitor.name
+    );
     if (index !== -1) {
       visitors[index] = updatedVisitor; // Update the visitor's details
     } else {
@@ -61,11 +61,11 @@ function updateVisitorArray(updatedVisitor) {
 }
 
 let currentFilters = {};
-let filteredAnimals = []; 
+let filteredAnimals = [];
 
 function setFilter(filterKey, filterValue) {
   currentFilters[filterKey] = filterValue !== "" ? filterValue : undefined;
-  
+
   localStorage.setItem("currentFilters", JSON.stringify(currentFilters));
 
   filterAnimals();
@@ -73,20 +73,32 @@ function setFilter(filterKey, filterValue) {
 
 function filterAnimals() {
   filteredAnimals = animals.filter((animal) => {
-    if (currentFilters.name && !animal.name.toLowerCase().includes(currentFilters.name.toLowerCase())) {
+    if (
+      currentFilters.name &&
+      !animal.name.toLowerCase().includes(currentFilters.name.toLowerCase())
+    ) {
       return false;
     }
-    
-    if (currentFilters.isPredator !== undefined && animal.isPredator !== (currentFilters.isPredator === "true")) {
+
+    if (
+      currentFilters.isPredator !== undefined &&
+      animal.isPredator !== (currentFilters.isPredator === "true")
+    ) {
       return false;
     }
     if (currentFilters.habitat && animal.habitat !== currentFilters.habitat) {
       return false;
     }
-    if (currentFilters.weight && animal.weight <= parseInt(currentFilters.weight)) {
+    if (
+      currentFilters.weight &&
+      animal.weight <= parseInt(currentFilters.weight)
+    ) {
       return false;
     }
-    if (currentFilters.height && animal.height <= parseInt(currentFilters.height)) {
+    if (
+      currentFilters.height &&
+      animal.height <= parseInt(currentFilters.height)
+    ) {
       return false;
     }
     if (currentFilters.color && animal.color !== currentFilters.color) {
@@ -108,7 +120,9 @@ function loadSavedFilters() {
     }
   }
 
-  const storedFilteredAnimals = JSON.parse(localStorage.getItem("filteredAnimals"));
+  const storedFilteredAnimals = JSON.parse(
+    localStorage.getItem("filteredAnimals")
+  );
   if (storedFilteredAnimals) {
     filteredAnimals = storedFilteredAnimals;
   } else {
@@ -120,7 +134,7 @@ function loadSavedFilters() {
 
 document.addEventListener("DOMContentLoaded", () => {
   loadSavedFilters();
-  populateColorOptions(); 
+  populateColorOptions();
 });
 
 const renderAvailableAnimals = () => {
@@ -132,7 +146,7 @@ const renderAvailableAnimals = () => {
     card.classList.add("animal-card");
 
     const image = document.createElement("img");
-    image.src = `images/${animal.name}.jpg`; 
+    image.src = `images/${animal.name}.jpg`;
     card.appendChild(image);
 
     const name = document.createElement("h3");
@@ -143,12 +157,11 @@ const renderAvailableAnimals = () => {
     details.textContent = `Habitat: ${animal.habitat}, Weight: ${animal.weight}kg, Height: ${animal.height}cm, Color: ${animal.color}`;
     card.appendChild(details);
 
-const visitAnimalButton = document.createElement("button");
-visitAnimalButton.innerText='Visit';
-visitAnimalButton.addEventListener("click", () => visitAnimal(animal.name));
+    const visitAnimalButton = document.createElement("button");
+    visitAnimalButton.innerText = "Visit";
+    visitAnimalButton.addEventListener("click", () => visitAnimal(animal.name));
     card.appendChild(visitAnimalButton);
 
-animalsContainer.appendChild(card);
+    animalsContainer.appendChild(card);
   });
 };
-
