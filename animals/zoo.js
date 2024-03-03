@@ -24,6 +24,24 @@ function visitAnimal(animalName) {
   }
 }
 
+function populateColorOptions() {
+  const colorSelect = document.getElementById('color'); // Adjust ID if necessary
+  const uniqueColors = new Set();
+
+  animals.forEach(animal => {
+    if (animal.color) {
+      uniqueColors.add(animal.color);
+    }
+  });
+
+  uniqueColors.forEach(color => {
+    const option = document.createElement('option');
+    option.value = color;
+    option.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+    colorSelect.appendChild(option);
+  });
+}
+
 function updateVisitorArray(updatedVisitor) {
   let visitors = JSON.parse(localStorage.getItem("visitors")); // Retrieve the existing visitors array
   if (visitors) {
@@ -100,7 +118,10 @@ function loadSavedFilters() {
   filterAnimals();
 }
 
-document.addEventListener("DOMContentLoaded", loadSavedFilters);
+document.addEventListener("DOMContentLoaded", () => {
+  loadSavedFilters();
+  populateColorOptions(); 
+});
 
 const renderAvailableAnimals = () => {
   const animalsContainer = document.querySelector(".animals-container");
@@ -119,7 +140,7 @@ const renderAvailableAnimals = () => {
     card.appendChild(name);
 
     const details = document.createElement("p");
-    details.textContent = `Habitat: ${animal.habitat}, Weight: ${animal.weight}kg, Height: ${animal.height}cm`;
+    details.textContent = `Habitat: ${animal.habitat}, Weight: ${animal.weight}kg, Height: ${animal.height}cm, Color: ${animal.color}`;
     card.appendChild(details);
 
 const visitAnimalButton = document.createElement("button");

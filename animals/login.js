@@ -48,7 +48,7 @@ const getSearchBox = () => {
   queryInput.className = "form-control my-4";
   queryInput.oninput = (e) => {
     visitorsForView = visitors.filter((visitor) =>
-      visitor.name.includes(e.target.value)
+    visitor.name.includes(e.target.value)
     );
     renderVisitors();
   };
@@ -61,7 +61,6 @@ const getEmptyCardsHTMLTemplate = () => {
 
   const template = `
     <h2>No Visitors Found</h2>
-    <p>We're sorry, but no products match your search or filter criteria.</p>
     <button id="clear-filter-btn" class="btn btn-dark">Clear search text</button>
     `;
   templateWrapper.innerHTML = template;
