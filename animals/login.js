@@ -47,10 +47,11 @@ const getSearchBox = () => {
   queryInput.placeholder = "Search visitor";
   queryInput.className = "form-control my-4";
   queryInput.oninput = (e) => {
-    visitorsForView = visitors.filter((visitor) =>
-    visitor.name.includes(e.target.value)
-    );
-    renderVisitors();
+    const searchValue = e.target.value.toLowerCase();
+  visitorsForView = visitors.filter((visitor) =>
+    visitor.name.toLowerCase().includes(searchValue)
+  );
+  renderVisitors();
   };
   return queryInput;
 };
