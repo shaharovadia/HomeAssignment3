@@ -1,0 +1,18 @@
+nav {
+    position: fixed; /* Keeps the navbar fixed at the top of the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Or any color you prefer */
+    z-index: 1000; /* Ensures the navbar is above other content */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Optional: adds shadow for better visibility */
+  }
+  
+  .visitor-image {
+    border-radius: 50%; /* Makes the image circular */
+    height: 40px; /* Adjust based on your preference */
+    width: 40px; /* Adjust to maintain aspect ratio */
+  }
