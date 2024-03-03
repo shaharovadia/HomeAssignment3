@@ -3,102 +3,112 @@ let visitors = [
   {
     name: "John Smith",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Emily Johnson",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "Michael Williams",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Jessica Brown",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "Christopher Jones",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Ashley Davis",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "Matthew Miller",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Amanda Wilson",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "David Moore",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Sarah Taylor",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "James Anderson",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Jennifer Thomas",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "Robert Jackson",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Elizabeth White",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "Daniel Harris",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Melissa Martin",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "William Thompson",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Linda Garcia",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
   {
     name: "Joseph Martinez",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
   },
   {
     name: "Karen Robinson",
     coins: 50,
-    thumbImage:"https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    thumbImage:
+      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
   },
 ];
 
