@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded",() => {
   const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  showFavoriteAnimal(currentVisitor);
   showFedAnimals(currentVisitor);
   showVisitedAnimals(currentVisitor);
 
@@ -20,6 +21,9 @@ function displayFedAnimals(fedAnimals) {
   
   const animalsContainer = document.querySelector("#fed-animals");
   animalsContainer.innerHTML = "";
+  const headline = document.createElement("h1");
+  headline.textContent = 'Fed animals:' ;
+  animalsContainer.appendChild(headline);
 
   fedAnimals.forEach((animal) => {
     const card = document.createElement("div");
@@ -42,11 +46,11 @@ function displayFedAnimals(fedAnimals) {
  }
 //   //ממשו את הלוגיקה שמציגה את החיות שהאורח הנוכחי ביקר אותן
 function displayVisitedAnimals(visitedAnimals) {
-  const animalsContainer = document.querySelector("#visited-animals"); // Assuming this element exists
-
+  const animalsContainer = document.querySelector("#visited-animals");
   animalsContainer.innerHTML = "";
-
-  // Assuming visitedAnimals is an object with animal names as keys
+  const headline = document.createElement("h1");
+      headline.textContent = 'Visited animals:' ;
+      animalsContainer.appendChild(headline);
   for (const animalName in visitedAnimals) {
     const animalData = visitedAnimals[animalName]; // Get the animal's data
 
@@ -54,7 +58,7 @@ function displayVisitedAnimals(visitedAnimals) {
     card.classList.add("animal-card");
 
     const image = document.createElement("img");
-    image.src = `images/${animalName}.jpg`; // Adjust path as needed
+    image.src = `images/${animalName}.jpg`;
     card.appendChild(image);
 
     const name = document.createElement("h3");
@@ -66,48 +70,51 @@ function displayVisitedAnimals(visitedAnimals) {
   };
 
 
-// function showFavoriteAnimal(visitor) {
-//   //ממשו את הלוגיקה שמציגה את החיה שהאורח ביקר הכי הרבה פעמים אצלה
-//   if (!visitor) {
-//     console.log("Visitor not found.");
-//     return false;
-//   }
+ function showFavoriteAnimal(currentVisitor) {
+  const visitedAnimals = currentVisitor.visitedAnimals;
+    const favoriteAnimal = getFavoriteAnimal(visitedAnimals);
 
-//   if (visitor.visitedAnimals.length === 0) {
-//     console.log(visitor.name, "has not visited any animals yet.");
-//     return false;
-//   }
-//   const animalVisitCounts = new Map();
+    if (favoriteAnimal) {
+      const favContainer = document.querySelector("#favorite-animal");
+      favContainer.innerHTML = "";
+      const card = document.createElement("div");
+      card.classList.add("animal-card");
 
-//   // Count visits for each animal
-//   for (const animal of visitor.visitedAnimals) {
-//     const animalName = animal.name;
-//     const currentCount = animalVisitCounts.get(animalName) || 0;
-//     animalVisitCounts.set(animalName, currentCount + 1);
-//   }
+      const headline = document.createElement("h1");
+      headline.textContent = 'Favorite animal is:' ;
+      card.appendChild(headline);
 
-//   // Find the animal with the most visits (handle ties)
-//   let mostVisitedAnimal;
-//   let maxVisitCount = 0;
-//   for (const [animalName, visitCount] of animalVisitCounts.entries()) {
-//     if (visitCount > maxVisitCount) {
-//       mostVisitedAnimal = animalName;
-//       maxVisitCount = visitCount;
-//     }
-//      else if (visitCount === maxVisitCount) {
-//       // In case of ties, append animal names to a string
-//       mostVisitedAnimal = (mostVisitedAnimal || "") + (mostVisitedAnimal ? ", " : "") + animalName;
-//     }
-//   }
+      const image = document.createElement("img");
+      image.src = `images/${favoriteAnimal}.jpg`
+      card.appendChild(image);
 
-//   // Display the result
-//   if (mostVisitedAnimal) {
-//     console.log(visitor.name + "'s favorite animal(s) is/are:", mostVisitedAnimal);
-//   } else {
-//     console.log(visitor.name, "has no favorite animal (all animals visited the same number of times).");
-//   }
-// }
+      const name = document.createElement("h3");
+      name.textContent = favoriteAnimal;
+      card.appendChild(name);
 
+      favContainer.appendChild(card);
+    } 
+
+    else 
+    {
+      document.getElementById("favorite-animal").textContent = "No animals visited yet.";
+    }
+    
+  }
+
+ function getFavoriteAnimal(visitedAnimals) {
+  let favoriteAnimal = null;
+  let maxVisits = 0;
+  for (const animalName in visitedAnimals) {
+    const visitCount = visitedAnimals[animalName];
+
+    if (visitCount > maxVisits) {
+      favoriteAnimal = animalName;
+      maxVisits = visitCount;
+    }
+  }
+  return favoriteAnimal;
+}
   
 
 
