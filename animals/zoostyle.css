@@ -2,8 +2,35 @@ body {
   background-size: contain;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-color: #080710;
-  background-image: url(./images/ZooBackground.jpg) ;
+  min-width: 800px;
+  background-color: #c5fa08;
+  background: -webkit-linear-gradient(to right, #ffd900, #88ff00, #ff6767);
+  background: linear-gradient(to right, #ffd900, #88ff00, #ff6767);
+  margin: 0px;
+  /* background-color: #080710;
+  background-image: url(./images/ZooBackground.jpg) ; */
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("Rubik Medium"), local("Rubik-Medium"),
+    url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7Eyjmmd8WD07oB-.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("Rubik Medium"), local("Rubik-Medium"),
+    url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7Eyjmmd8WD07oB-.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
 .search-wrapper {
   display: inline;
@@ -13,6 +40,10 @@ body {
 
 input {
   font-size: 1rem;
+}
+.filter-container {
+  margin-left: 18%;
+  justify-content: center;
 }
 
 .animals-container {
@@ -38,28 +69,6 @@ input {
   justify-content: center;
   flex-direction: column;
   object-fit: cover;
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local("Rubik Medium"), local("Rubik-Medium"),
-    url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7Eyjmmd8WD07oB-.woff2)
-      format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local("Rubik Medium"), local("Rubik-Medium"),
-    url(https://fonts.gstatic.com/s/rubik/v9/iJWHBXyIfDnIV7Eyjmmd8WD07oB-.woff2)
-      format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
 }
 .animal-card button {
   padding: 0.6em 2em;

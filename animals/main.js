@@ -213,36 +213,47 @@ function logout() {
 function createNavBar() {
   const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
   const navbar = document.createElement("nav");
+  navbar.id = "Navbar";
+
   // Add links to the navbar
+
   navbar.innerHTML = `
+ <div class ="allinfo"> 
+ <div class ="links">
     <a href="zoo.html">Zoo</a>
-    <a href="animal.html">Animal</a>
+    <a href="animal.html" id="midlink">Animal</a>
     <a href="dashboard.html">Dashboard</a>
+    </div>
     <span>${currentVisitor.name} - ${currentVisitor.coins} coins</span>
     <img src="path/to/visitor/image.jpg" class="visitor-image" alt="Visitor">
     <button id="resetGame">Reset Game</button>
     <select id="visitorDropdown"></select>
+    </div>
   `;
   document.body.prepend(navbar);
-  
+
   // Populate visitor dropdown and add event listener for change
   const visitorDropdown = document.getElementById("visitorDropdown");
   // Assuming visitors array is available globally or fetched from localStorage
-  visitors.forEach(visitor => {
+  visitors.forEach((visitor) => {
     let option = new Option(visitor.name, visitor.name);
     visitorDropdown.add(option);
   });
 
-  visitorDropdown.addEventListener('change', (e) => {
+  visitorDropdown.addEventListener("change", (e) => {
     // Logic to update current visitor
-    const selectedVisitor = visitors.find(v => v.name === e.target.value);
+    const selectedVisitor = visitors.find((v) => v.name === e.target.value);
     localStorage.setItem("currentVisitor", JSON.stringify(selectedVisitor));
     window.location.reload(); // Refresh to update displayed data
   });
 
   // Reset game button functionality
-  document.getElementById("resetGame").addEventListener('click', () => {
+  document.getElementById("resetGame").addEventListener("click", () => {
     localStorage.clear();
-    window.location.href = 'login.html'; // Redirect to login page
+    window.location.href = "login.html"; // Redirect to login page
   });
 }
+const link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = "main.css";
+document.head.appendChild(link);

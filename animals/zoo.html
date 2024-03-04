@@ -31,19 +31,21 @@
         <option value="sea">Sea</option>
       </select>
 
-      <label for="weight">Weight (greater than):</label>
+      <label for="weight">Weight:</label>
       <input
         type="number"
         id="weight"
+        placeholder="(greater than)"
         min="0"
         onchange="setFilter('weight', parseInt(this.value))"
       />
 
-      <label for="height">Height (greater than):</label>
+      <label for="height">Height:</label>
       <input
         type="number"
         id="height"
         min="0"
+        placeholder="(greater than)"
         onchange="setFilter('height', parseInt(this.value))"
       />
 
