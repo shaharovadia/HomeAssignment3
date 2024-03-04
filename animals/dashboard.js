@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded",() => {
   const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  createNavBar();
   showFavoriteAnimal(currentVisitor);
   showFedAnimals(currentVisitor);
   showVisitedAnimals(currentVisitor);
