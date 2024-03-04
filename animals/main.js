@@ -225,12 +225,13 @@ function createNavBar() {
     <a href="dashboard.html">Dashboard</a>
     </div>
     <span>${currentVisitor.name} - ${currentVisitor.coins} coins</span>
-    <img src="path/to/visitor/image.jpg" class="visitor-image" alt="Visitor">
+    
     <button id="resetGame">Reset Game</button>
     <select id="visitorDropdown"></select>
     </div>
   `;
   document.body.prepend(navbar);
+  // <img src="path/to/visitor/image.jpg" class="visitor-image" alt="Visitor"></img>
 
   // Populate visitor dropdown and add event listener for change
   const visitorDropdown = document.getElementById("visitorDropdown");
