@@ -187,8 +187,6 @@ let animals = [
   },
 ];
 
-// פונקציה זו טוענת עבורכם את המידע ההתחלתי של האפליקציה, במידה וקיים מידע בלוקל סטורג׳, היא תקח אותו משם
-// אל תשנו את הקוד בפונקציה הזו כדי לשמור על תקינות הטמפלייט
 function generateDataset() {
   if (localStorage.getItem("visitors")) {
     visitors = JSON.parse(localStorage.getItem("visitors"));
@@ -215,7 +213,6 @@ function createNavBar() {
   const navbar = document.createElement("nav");
   navbar.id = "Navbar";
 
-  // Add links to the navbar
 
   navbar.innerHTML = `
  <div class ="allinfo"> 
@@ -232,7 +229,6 @@ function createNavBar() {
   </div>
   `;
   document.body.prepend(navbar);
-  // <img src="path/to/visitor/image.jpg" class="visitor-image" alt="Visitor"></img>
 
   // Populate visitor dropdown and add event listener for change
   const visitorDropdown = document.getElementById("visitorDropdown");

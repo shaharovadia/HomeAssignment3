@@ -7,17 +7,16 @@ function loginAsVisitor(visitorName) {
 
   if (selectedVisitor) {
     localStorage.setItem("currentVisitor", JSON.stringify(selectedVisitor));
-    
-    // Create and configure the dialog
+  
+
     const dialog = document.createElement('dialog');
     dialog.textContent = `Welcome to the zoo ${visitorName}!`;
     document.body.appendChild(dialog);
     dialog.showModal();
 
-    // Close the dialog after 3 seconds
     setTimeout(() => {
       dialog.close();
-      window.location.href = "zoo.html"; // Redirect after closing the dialog
+      window.location.href = "zoo.html"; 
     }, 3000);
   }
 }
