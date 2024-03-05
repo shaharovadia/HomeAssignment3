@@ -53,14 +53,25 @@ const visitorExists1 = (fullName1) => {
   return true;
 }
 
- const makeVisitor1 = (fullName1) => {
-     // מקבל שם, בודק שאין אותו כבר במערך האורחים ומחזיר אובייקט אורח
-    let visitor = {name: fullName1 , coins: 50, thumbImage: "https://www.miicharacters.com/miis/thumb/1370_bowser.jpg"}
-    visitors.push(visitor);
-    const visitorsJson = JSON.stringify(visitors);
-     // Save the JSON string in local storage using the key "visitors"
-    localStorage.setItem("visitors", visitorsJson);
-    alert("Visitor added successfully!");
-    form1.reset(); // Reset the form after successful submission
-    window.location.href="./login.html";
- }
+const makeVisitor1 = (fullName1) => {
+  let visitor = {name: fullName1, coins: 50, thumbImage: "https://www.miicharacters.com/miis/thumb/1370_bowser.jpg"}
+  visitors.push(visitor);
+  const visitorsJson = JSON.stringify(visitors);
+  localStorage.setItem("visitors", visitorsJson);
+
+  // Create and configure the dialog
+  const dialog = document.createElement("dialog");
+  dialog.setAttribute("id", "welcomeDialog");
+  dialog.innerHTML = `<p>${fullName1} registered successfully</p>`;
+  document.body.appendChild(dialog);
+
+  // Show the dialog
+  dialog.showModal();
+
+  // Close the dialog after 3 seconds and then redirect
+  setTimeout(() => {
+      dialog.close();
+      // Redirect after the dialog is closed
+      window.location.href = "login.html";
+  }, 2000);
+}

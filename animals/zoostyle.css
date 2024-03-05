@@ -1,13 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
 body {
   background-size: contain;
   background-attachment: fixed;
   background-repeat: no-repeat;
   min-width: 800px;
-  background-color: #c5fa08;
-  background: -webkit-linear-gradient(to right, #ffd900, #88ff00, #ff6767);
-  background: linear-gradient(to right, #ffd900, #88ff00, #ff6767);
+  background-color: #Ebc944;
   margin: 0px;
-  font-family: "Rubik";
+  font-family: "Skranji", cursive;
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -50,16 +49,15 @@ input {
   grid-template-rows: repeat(3, minmax(300px, 600px));
   grid-gap: 2.2rem;
   grid-auto-flow: dense;
-  border: 2px solid rgb(241, 224, 151);
   padding: 14px 6px 10px;
   border-radius: 10px;
   transition: transform 100ms linear 0s;
 }
 .animal-card {
-  border: 2px solid rgb(235, 208, 87);
+  color: #093145;
+  background-color: #efd469;
   padding: 10px;
   border-radius: 7px;
-  border-color: rgb(253, 253, 0);
   width: 100%;
   height: 100%;
   display: flex;
@@ -67,6 +65,8 @@ input {
   justify-content: center;
   flex-direction: column;
   object-fit: cover;
+  backdrop-filter: blur(10px);
+box-shadow: 0 0 20px rgba(8, 7, 16, 0.6);
 }
 
  .animal-card button {
@@ -172,3 +172,9 @@ img {
 .hide {
   display: none;
 }
+ 
+  .filter-container {
+    max-width: 100%;
+    gap: 1rem; /* This provides space between the items */
+  }
+ 

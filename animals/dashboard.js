@@ -47,6 +47,7 @@ function displayFedAnimals(fedAnimals) {
  }
 //   //ממשו את הלוגיקה שמציגה את החיות שהאורח הנוכחי ביקר אותן
 function displayVisitedAnimals(visitedAnimals) {
+  if(visitedAnimals){
   const animalsContainer = document.querySelector("#visited-animals");
   animalsContainer.innerHTML = "";
   const headline = document.createElement("h1");
@@ -69,6 +70,7 @@ function displayVisitedAnimals(visitedAnimals) {
     animalsContainer.appendChild(card);
   }
   };
+}
 
 
  function showFavoriteAnimal(currentVisitor) {
@@ -98,7 +100,8 @@ function displayVisitedAnimals(visitedAnimals) {
 
     else 
     {
-      document.getElementById("favorite-animal").textContent = "No animals visited yet.";
+      
+      document.getElementById("favorite-animal").textContent = 'No animals visited yet.';
     }
     
   }

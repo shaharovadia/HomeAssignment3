@@ -7,9 +7,18 @@ function loginAsVisitor(visitorName) {
 
   if (selectedVisitor) {
     localStorage.setItem("currentVisitor", JSON.stringify(selectedVisitor));
-    alert("Welcome to the zoo!");
+    
+    // Create and configure the dialog
+    const dialog = document.createElement('dialog');
+    dialog.textContent = `Welcome to the zoo ${visitorName}!`;
+    document.body.appendChild(dialog);
+    dialog.showModal();
 
-    window.location.href = "zoo.html";
+    // Close the dialog after 3 seconds
+    setTimeout(() => {
+      dialog.close();
+      window.location.href = "zoo.html"; // Redirect after closing the dialog
+    }, 3000);
   }
 }
 
@@ -19,24 +28,23 @@ const dialog = document.querySelector("#visitor-dialog");
 const getVisitorHTMLCard = (visitor) => {
   const template = `
       <div class="card" style="min-height: 260px;" >
-        <img class="card-img-top" src="${visitor.thumbImage || 'default-placeholder-image-url.jpg'}" alt="${visitor.name}"/>
+        <img class="card-img-top" src="${visitor.thumbImage}" alt="${visitor.name}"/>
         <div class="card-body">
           <p class="card-text">${visitor.name}</p>
           <p class="card-text">${visitor.coins}</p>
+          <button class="select-button">Select</button>
         </div>
       </div>`;
 
-  const selectVisitorButton = document.createElement("button");
-  selectVisitorButton.innerText = "Select";
-  selectVisitorButton.addEventListener("click", () => {
-    loginAsVisitor(visitor.name); // Call loginAsVisitor when button is clicked
-  });
+     
 
   const wrapper = document.createElement("div");
   wrapper.className = "visitor-card";
   wrapper.innerHTML = template;
-  wrapper.addEventListener("click", () => handleVisitorClick(visitor));
-  wrapper.appendChild(selectVisitorButton);
+
+  const button = wrapper.querySelector('.select-button');
+  button.addEventListener('click', () => loginAsVisitor(visitor.name));
+
   return wrapper;
 };
 

@@ -1,14 +1,13 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
 body {
-  font-family: sans-serif;
+  font-family:"Skranji", cursive;
   margin: 0;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  color: #093145;
   min-height: 100vh;
-  background-color: #c5fa08;
-  background: -webkit-linear-gradient(to right, #ffd900, #88ff00, #ff6767);
-  background: linear-gradient(to right, #ffd900, #88ff00, #ff6767);
+  background-color: #Ebc944;
 }
 #container{
   display: grid;
@@ -61,15 +60,19 @@ h2 {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
-  background-color: #d6ff44;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #efd469;
   display: flex;
   align-items: center;
+  box-shadow: 0 0 20px rgba(45, 44, 56, 0.6);
 }
 
 .animal-card img {
   width: 80px;
   height: 80px;
+  margin-left:15px;
   margin-right: 10px;
-  border-radius: 5px;
+  border-radius: 25px;
+}
+#favorite-animal{
+  font-size: large;
 }

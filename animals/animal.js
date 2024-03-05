@@ -12,7 +12,7 @@ function renderAnimal() {
     detailsWrapper.classList.add("animal-details");
 
     // Dynamically create and append new elements to display the animal's details
-    detailsWrapper.appendChild(createElementWithText("h2", animalData.name));
+    detailsWrapper.appendChild(createElementWithText("h1", animalData.name));
     detailsWrapper.appendChild(
       createElementWithText("p", `Habitat: ${animalData.habitat}`)
     );
@@ -100,7 +100,7 @@ function renderRelatedAnimals() {
       image.src = `images/${animal.name}.jpg`;
       card.appendChild(image);
 
-      const name = document.createElement("h3");
+      const name = document.createElement("h1");
       name.textContent = animal.name;
       card.appendChild(name);
 

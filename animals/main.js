@@ -3,112 +3,112 @@ let visitors = [
   {
     name: "John Smith",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Emily Johnson",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "Michael Williams",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Jessica Brown",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "Christopher Jones",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Ashley Davis",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "Matthew Miller",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Amanda Wilson",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "David Moore",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Sarah Taylor",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "James Anderson",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Jennifer Thomas",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "Robert Jackson",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Elizabeth White",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "Daniel Harris",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Melissa Martin",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "William Thompson",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Linda Garcia",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+    "./images/woman.jpg",
   },
   {
     name: "Joseph Martinez",
     coins: 50,
-    thumbImage: "https://www.miicharacters.com/miis/thumb/968_barts.jpg",
+    thumbImage: "./images/man.jpg",
   },
   {
     name: "Karen Robinson",
     coins: 50,
     thumbImage:
-      "https://www.miicharacters.com/miis/thumb/18265_paulapolestar.jpg",
+       "./images/woman.jpg",
   },
 ];
 
@@ -223,12 +223,13 @@ function createNavBar() {
     <a href="zoo.html">Zoo</a>
     <a href="animal.html" id="midlink">Animal</a>
     <a href="dashboard.html">Dashboard</a>
-    </div>
+  </div>
+  <div id="butt">
     <span id="visitorData">${currentVisitor.name} - ${currentVisitor.coins} coins</span>
-    
     <button id="resetGame">Reset Game</button>
     <select id="visitorDropdown"></select>
-    </div>
+  </div>
+  </div>
   `;
   document.body.prepend(navbar);
   // <img src="path/to/visitor/image.jpg" class="visitor-image" alt="Visitor"></img>
@@ -248,10 +249,12 @@ function createNavBar() {
     window.location.reload(); // Refresh to update displayed data
   });
 
+  visitorDropdown.value = currentVisitor.name;
+
   // Reset game button functionality
   document.getElementById("resetGame").addEventListener("click", () => {
     localStorage.clear();
-    window.location.href = "login.html"; // Redirect to login page
+    window.location.href = "signup.html"; 
   });
 }
 const link = document.createElement("link");
