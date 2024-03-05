@@ -35,7 +35,17 @@ function renderAnimal() {
     image.alt = `Image of ${animalData.name}`;
     container.appendChild(image);
     if (feedButton) {
-      feedButton.addEventListener("click", feedAnimal);
+      feedButton.addEventListener("click", () => {
+        const promise = document.getElementById("feedSound").play();
+        ; // Get a promise representing the audio play operation
+        if (promise && typeof promise.then === "function") { // Check if it's a promise
+          promise.then(() => { // Call feedAnimal when the audio playback starts successfully
+            feedAnimal();
+          });
+        } else { // Handle any errors or non-promise scenarios
+          console.error("Failed to play audio");
+        }
+      });
     }
   }
 }
@@ -113,24 +123,34 @@ function visitAnimal(animalName) {
 
   renderAnimal();
   renderRelatedAnimals();
+  goToTop();
+}
+
+function goToTop() {
+  window.scroll({ top: 0, behavior: 'smooth' });
 }
 
 function feedAnimal() {
   const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
   const currentAnimal = JSON.parse(localStorage.getItem("currentAnimal"));
+  
 
   if (currentVisitor && currentVisitor.coins >= 2) {
+
     currentVisitor.coins -= 2; // Deduct 2 coins
+   
+
     if (!currentVisitor.fedAnimals) {
       currentVisitor.fedAnimals = []; // Initialize the array if it doesn't exist
     }
     if (!currentVisitor.fedAnimals.includes(currentAnimal.name)) {
       currentVisitor.fedAnimals.push(currentAnimal.name);
     }
-    alert("Thank you for feeding the animal!");
+    
     // Update visitor in local storage
     localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
     updateVisitorArray(currentVisitor); // Assume this function updates the visitors array and handles storage
+    window.location.reload();
   } else {
     if (currentAnimal.isPredator) {
       visitorGotEaten();
