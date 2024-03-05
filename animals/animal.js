@@ -8,32 +8,41 @@ function renderAnimal() {
 
     // Clear previous content
     container.innerHTML = "";
+    const detailsWrapper = document.createElement("div");
+    detailsWrapper.classList.add("animal-details");
 
     // Dynamically create and append new elements to display the animal's details
-    container.appendChild(createElementWithText("h2", animalData.name));
-    container.appendChild(
+    detailsWrapper.appendChild(createElementWithText("h2", animalData.name));
+    detailsWrapper.appendChild(
       createElementWithText("p", `Habitat: ${animalData.habitat}`)
     );
-    container.appendChild(
+    detailsWrapper.appendChild(
       createElementWithText("p", `Weight: ${animalData.weight} kg`)
     );
-    container.appendChild(
+    detailsWrapper.appendChild(
       createElementWithText("p", `Height: ${animalData.height} cm`)
     );
-    container.appendChild(
+    detailsWrapper.appendChild(
       createElementWithText("p", `Color: ${animalData.color}`)
     );
-    container.appendChild(
+    detailsWrapper.appendChild(
       createElementWithText(
         "p",
         `Predator: ${animalData.isPredator ? "Yes" : "No"}`
       )
     );
-    container.appendChild(createElementWithText("button", "Feed Me"));
+    const feedButton = createElementWithText("button", "Feed Me");
+    feedButton.classList.add("feed-button"); // Add a class for styling
+    detailsWrapper.appendChild(feedButton);
+    if (feedButton) {
+      feedButton.addEventListener("click", feedAnimal); // Attach event listener
+    }
     const image = document.createElement("img");
     image.src = `./images/${animalData.name}.jpg`;
     image.alt = `Image of ${animalData.name}`;
+    container.appendChild(detailsWrapper);
     container.appendChild(image);
+<<<<<<< HEAD
     if (feedButton) {
       feedButton.addEventListener("click", () => {
         const promise = document.getElementById("feedSound").play();
@@ -47,6 +56,10 @@ function renderAnimal() {
         }
       });
     }
+=======
+    
+    
+>>>>>>> bfcaeb3c11e78361d6ddee478dab99a2696b6039
   }
 }
 
