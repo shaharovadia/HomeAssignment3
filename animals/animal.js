@@ -34,15 +34,11 @@ function renderAnimal() {
     const feedButton = createElementWithText("button", "Feed Me");
     feedButton.classList.add("feed-button"); // Add a class for styling
     detailsWrapper.appendChild(feedButton);
-    if (feedButton) {
-      feedButton.addEventListener("click", feedAnimal); // Attach event listener
-    }
     const image = document.createElement("img");
     image.src = `./images/${animalData.name}.jpg`;
     image.alt = `Image of ${animalData.name}`;
     container.appendChild(detailsWrapper);
     container.appendChild(image);
-<<<<<<< HEAD
     if (feedButton) {
       feedButton.addEventListener("click", () => {
         const promise = document.getElementById("feedSound").play();
@@ -56,10 +52,17 @@ function renderAnimal() {
         }
       });
     }
-=======
     
     
->>>>>>> bfcaeb3c11e78361d6ddee478dab99a2696b6039
+  }
+}
+function updateNavInfo()
+{
+  const currentVisitor = JSON.parse(localStorage.getItem("currentVisitor"));
+  const visitorDataSpan = document.getElementById("visitorData");
+
+  if (currentVisitor && visitorDataSpan) {
+    visitorDataSpan.textContent = `${currentVisitor.name}-${currentVisitor.coins}`;
   }
 }
 
@@ -151,7 +154,7 @@ function feedAnimal() {
   if (currentVisitor && currentVisitor.coins >= 2) {
 
     currentVisitor.coins -= 2; // Deduct 2 coins
-   
+
 
     if (!currentVisitor.fedAnimals) {
       currentVisitor.fedAnimals = []; // Initialize the array if it doesn't exist
@@ -163,7 +166,7 @@ function feedAnimal() {
     // Update visitor in local storage
     localStorage.setItem("currentVisitor", JSON.stringify(currentVisitor));
     updateVisitorArray(currentVisitor); // Assume this function updates the visitors array and handles storage
-    window.location.reload();
+    updateNavInfo();
   } else {
     if (currentAnimal.isPredator) {
       visitorGotEaten();

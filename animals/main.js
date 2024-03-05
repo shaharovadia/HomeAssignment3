@@ -224,7 +224,7 @@ function createNavBar() {
     <a href="animal.html" id="midlink">Animal</a>
     <a href="dashboard.html">Dashboard</a>
     </div>
-    <span>${currentVisitor.name} - ${currentVisitor.coins} coins</span>
+    <span id="visitorData">${currentVisitor.name} - ${currentVisitor.coins} coins</span>
     
     <button id="resetGame">Reset Game</button>
     <select id="visitorDropdown"></select>
